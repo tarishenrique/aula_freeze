@@ -21,3 +21,5 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <!-- Inclui todos os plugins compilados (abaixo), ou inclua arquivos separadados se necessário -->
 <script src="js_bootstrap/bootstrap.min.js"></script>
+
+<link rel="icon" href="./images/sorvete.png" type="image/x-icon">

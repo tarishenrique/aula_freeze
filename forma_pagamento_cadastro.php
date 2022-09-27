@@ -14,15 +14,16 @@
     <?php include 'header.php' ?>
 
     <!-- CORPO -->
-    <form name="formProduto" action="produto_salvar.php" method="post">
+    <form name="formPagamento" action="forma_pagamento_salvar.php" method="post">
         <div id="body" class="contact">
             <div class="footer">
                 <div class="contact">
-                    <h1>CADASTRAR PRODUTO</h1>
+                    <h1>CADASTRAR FORMA DE PAGAMENTO</h1>
 
                     <ol>
                         <li>
-                            <input type="text" name="txtDescricao" class="textbox" placeholder="Descrição do produto" />
+                            <input type="text" name="txtDescricao" class="textbox"
+                                placeholder="Descrição da Forma de Pagamento" />
                         </li>
 
                         <li>
