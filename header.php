@@ -4,7 +4,7 @@
             <img src="images/logo.png" alt="" /></a>
         <ul id="navigation">
             <li class="selected">
-                <a href="#">Home</a>
+                <a href="index.php">Home</a>
             </li>
 
             <li class="menu">
@@ -25,6 +25,10 @@
 
             </li>
             <li class="menu">
+                <a href="forma_pagamento_cadastro.php">Cadastrar forma pagamento</a>
+
+            </li>
+            <li class="menu">
                 <a href="relatorio_encomenda.php">Relatório de encomendas</a>
 
             </li>
@@ -32,7 +36,7 @@
                 <a href="encomenda_buscar.php">Buscar encomenda</a>
 
             </li>
-            
+
         </ul>
     </div>
 </div>
