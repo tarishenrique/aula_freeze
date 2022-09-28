@@ -1,112 +1,106 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>Freeeze Sorvetes</title>
+<html lang="pt-br">
 
-        <!-- Estilo CSS -->
-        <link rel="stylesheet" href="css/style.css" type="text/css" />
-        <link rel="stylesheet" href="css/estiloformularios.css" type="text/css" />
-        <link rel="stylesheet" type="text/css" href="css/mobile.css" />
-        <script src="js/mobile.js" type="text/javascript"></script>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <?php include "./importacoes.php" ?>
+</head>
 
-        <script src="mascaras.js" type="text/javascript"></script>
+<body>
+    <?php
+    include "./header.php";
+    include "./conexao_bd.php";
+    ?>
 
+    <!-- CORPO -->
+    <form name="formEncomenda " action="encomenda_salvar.php" method="post">
 
-        <!-- Bootstrap -->
-        <link href="css_bootstrap/bootstrap.min.css" rel="stylesheet" />
+        <div id="body" class="contact">
+            <div class="footer">
+                <div class="contact">
 
-        <!-- HTML5 shim e Respond.js para suporte no IE8 de elementos HTML5 e media queries -->
-        <!-- ALERTA: Respond.js não funciona se você visualizar uma página file:// -->
-        <!--[if lt IE 9]>
-          <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"/></script>
-          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-        <![endif]-->
+                    <h1>ENCOMENDE SEU PRODUTO</h1>
 
+                    <ol>
+                        <li>
+                            <input type="text" name="txtNome" required class="textbox" placeholder="Nome completo">
+                        </li>
 
-        <!-- jQuery (obrigatório para plugins JavaScript do Bootstrap) -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-        <!-- Inclui todos os plugins compilados (abaixo), ou inclua arquivos separadados se necessário -->
-        <script src="js_bootstrap/bootstrap.min.js"></script>
-    </head>
-    <body>
+                        <li>
+                            <input type="text" name="txtTelefone" required class="textbox"
+                                placeholder="Telefone de contato" onkeyup="formataTelefone(this, event)"
+                                MaxLength="15" />
+                        </li>
 
+                        <li>
+                            <input type="text" name="txtEndereco" class="textbox" placeholder="Endereço de entrega" />
+                        </li>
 
-        <!-- CABEÇALHO -->
-        <?php
-        include 'header.php'
-        ?>
+                        <li>
+                            <select class="dropdown" name="listaProduto">
+                                <?php
+                                $sql = "SELECT * FROM produto ORDER BY descricao";
 
-        <!-- CORPO -->
-        <form name="formEncomenda "action="" method="post">
+                                $resultado = retornarDados($sql);
 
-            <div id="body" class="contact">
-                <div class="footer">
-                    <div class="contact">
+                                while ($item = mysqli_fetch_assoc($resultado)) {
+                                ?>
+                                <option value="<?php $item["descricao"] ?>"><?php echo $item["descricao"] ?></option>
+                                <?php } ?>
+                            </select>
+                        </li>
 
-                        <h1>ENCOMENDE SEU PRODUTO</h1>
+                        <li>
+                            <select name="listaQuantidade" class="dropdown">
+                                <option value="10">10 Unidades</option>
+                                <option value="20">20 Unidades</option>
+                                <option value="40">40 Unidades</option>
+                                <option value="80">80 Unidades</option>
+                                <option value="120">120 Unidades</option>
+                                <option value="160">160 Unidades</option>
+                                <option value="200">200 Unidades</option>
+                                <option value="300">300 Unidades</option>
+                                <option value="500">500 Unidades</option>
+                            </select>
+                        </li>
+                        <li>
 
-                        <ol>
-                            <li>
-                                <input type="text" name="txtNome"   required  class="textbox" placeholder="Nome completo"></li>
+                            <!-- A LISTA DE FORMAS DE PAGAMENTO DEVEM VIR DO BANCO DE DADOS -->
+                            <select name="listaFormaPagamento" class="dropdown">
+                                <?php
+                                $sql = "SELECT * FROM forma_pagamento ORDER BY descricao";
 
-                            <li>
-                                <input type="text" name="txtTelefone" required  class="textbox" placeholder="Telefone de contato" onkeyup="formataTelefone(this, event)" MaxLength="15"/></li>
+                                $resultado = retornarDados($sql);
 
-                            <li>
-                                <input type="text" name="txtEndereco" class="textbox" placeholder="Endereço de entrega"/></li>
+                                while ($item = mysqli_fetch_assoc($resultado)) {
+                                ?>
+                                <option value="<?php $item["descricao"] ?>"><?php echo $item["descricao"] ?></option>
+                                <?php } ?>
 
+                            </select>
 
-                            <li>
-                                <!-- A LISTA DE PRODUTOS DEVEM VIR DO BANCO DE DADOS -->
-                                <select class="dropdown" name="listaProduto">
-                                    <option></option>
-                                </select>
-                            </li>
-                            <li>
-                                <select name="listaQuantidade"  class="dropdown">
-                                    <option>10 Unidades</option>
-                                    <option>20 Unidades</option>
-                                    <option>40 Unidades</option>
-                                    <option>80 Unidades</option>
-                                    <option>120 Unidades</option>
-                                    <option>160 Unidades</option>
-                                    <option>200 Unidades</option>
-                                    <option>300 Unidades</option>
-                                    <option>500 Unidades</option>
-                                </select></li>
-                            <li>
-
-                                   <!-- A LISTA DE FORMAS DE PAGAMENTO DEVEM VIR DO BANCO DE DADOS -->
-                                <select name="listaFormaPagamento"  class="dropdown">
-                                    <option></option>
-
-                                </select>
-
-                            </li>
-                            <li>
-                                <input type="submit" name="btSalvar"   value="Enviar"  class="botao" />
-                            </li>
-                        </ol>
+                        </li>
+                        <li>
+                            <input type="submit" name="btSalvar" value="Enviar" class="botao" />
+                        </li>
+                    </ol>
 
 
-
-                    </div>
 
                 </div>
+
             </div>
-        </form>
+        </div>
+    </form>
 
 
-        <!-- RODAPE -->
-        <?php
-        include 'footer.php'
-        ?>
+    <!-- RODAPE -->
+    <?php
+    include 'footer.php'
+    ?>
 
-    </body>
+</body>
+
 </html>
