@@ -1,12 +1,10 @@
 <!DOCTYPE html>
 
-<html>
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
     <title>Freeeze Sorvetes</title>
-
-    <!-- Estilo CSS -->
     <link rel="stylesheet" href="css/style.css" type="text/css" />
     <link rel="stylesheet" href="css/estiloformularios.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="css/mobile.css" />
@@ -35,53 +33,63 @@
 <body>
 
 
-    <!-- CABEÇALHO -->
-    <?php
-    include './header_principal.php'
-    ?>
-
-    <!-- CORPO -->
-    <form name="formContato" action="" method="post">
-        <div id="body" class="contact">
-            <div class="footer">
-                <div class="contact">
-
-                    <h1>FALE CONOSCO</h1>
-
-                    <ol>
-                        <li>
-                            <input type="text" name="txtNome" class="textbox" required placeholder="Nome completo" />
-                        </li>
-
-                        <li>
-                            <input type="text" name="txtEmail" required class="textbox" placeholder="E-mail" />
-                        </li>
-
-                        <li>
-                            <input type="text" name="txtAssunto" required class="textbox" placeholder="Assunto" />
-                        </li>
-                        <li>
-                            <textarea name="txtMensagem" requerid class="textboxMaior"
-                                placeholder="Digite aqui a sua mensagem."></textarea>
-                        </li>
-
-                        <li>
-                            <input type="submit" name="btSalvar" value="Enviar" class="botao" />
-                        </li>
-                    </ol>
 
 
+    <form method="post">
+
+        <!-- CABEÇALHO -->
+        <?php include './header_principal.php' ?>
+
+
+        <!-- CORPO DO INDEX -->
+        <div id="body" class="home">
+
+            <!-- CORPO -->
+            <div class="body">
+                <div>
+                    <div>
+                        <h1>NOVO PRODUTO</h1>
+                        <h2>Framboesa flambada com creme</h2>
+                        <p>A combinação de framboesas flambadas com um delicioso sorvete de creme de baunilha é
+                            simplesmente indescritível. </p>
+                    </div>
+
+                    <img src="images/yogurt.jpg" alt="" />
                 </div>
-
             </div>
+
+            <!-- RODAPÉ DO CORPO -->
+            <div class="footer">
+                <div>
+                    <ul>
+                        <li>
+                            <a href="#" class="product"></a>
+                            <h1>PRODUTOS</h1>
+                        </li>
+                        <li>
+                            <a href="#" class="about"></a>
+                            <h1>NOSSA HISTÓRIA</h1>
+                        </li>
+                        <li>
+                            <a href="#" class="flavor"></a>
+                            <h1>SABORES</h1>
+                        </li>
+                        <li>
+                            <a href="#" class="contact"></a>
+                            <h1>LOCALIZAÇÃO</h1>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
         </div>
+
+
+
+        <!-- RODAPÉ -->
+        <?php include 'footer.php' ?>
+
     </form>
-
-    <!-- RODAPE -->
-    <?php
-    include 'footer.php'
-    ?>
-
 </body>
 
 </html>

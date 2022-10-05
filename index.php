@@ -10,6 +10,23 @@
 </head>
 
 <body>
+    <?php
+    include './conexao_bd.php';
+
+    $login = $_POST["txtLogin"];
+    $senha = $_POST["txtSenha"];
+
+    $senha = md5($senha);
+
+    $sql = "SELECT login FROM usuario WHERE login = '$login' AND senha = '$senha'";
+
+    $resultado = retornarDados($sql);
+
+    if (count($resultado) == 0) {
+        header("location:usuario_logar.php");
+    }
+
+    ?>
 
     <form method="post">
 
